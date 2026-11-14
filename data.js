@@ -3,6 +3,7 @@
 // dueText: shown when there is no confirmed date, or as a note beside it. approx: best-guess date (YYYY-MM-DD) used only for ordering, when the real one is not posted.
 // until: the last day of an event (YYYY-MM-DD); the page drops the row after it.
 // via: where it was found. added: the day it was first listed (YYYY-MM-DD); the page marks items added in the last 10 days as new.
+// alerted: the day the daily sweep included the row in an email (set by the sweep; the page ignores it).
 window.SWEPT = "2026-11-14";
 window.ITEMS = [
 {"kind": "position", "fit": 4, "stage": "later", "name": "Assistant or Associate Professor, Economics", "org": "Baruch College (CUNY) · Economics and Finance", "detail": "New York, NY", "why": "CUNY, New York; macro fields", "url": "https://www.aeaweb.org/joe/listing.php?JOE_ID=2026-02_111478143", "dues": ["2026-12-02"], "dueText": "", "tags": ["New York area", "Tenure-track"]},
