@@ -42,13 +42,15 @@ h2{font-size:28px;font-weight:700;font-style:italic;line-height:1.25;color:#2727
 
 .soon{color:#1F4E8C;font-weight:700}.more[hidden]{display:none}
 .new{font-size:9.5px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:#fff;background:#1F4E8C;padding:1px 5px;border-radius:2px}
-.next{counter-reset:n;border-top:1px solid #272727}.next a.n{counter-increment:n;display:grid;grid-template-columns:34px 1fr auto;gap:14px;padding:14px 2px;border-bottom:1px solid #EAEAEA;text-decoration:none;color:#262626;align-items:start}
-.next a.n::before{content:counter(n);font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:26px;line-height:1;color:#9DBFE3}.next a.n:hover strong{text-decoration:underline}
-.next strong{display:block;font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:17px;color:#1F4E8C}.next .k{font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:#888888}.next .o{display:block;font-size:12px;color:#888888}.next .w{display:block;font-size:12.5px;color:#444}
+.next{counter-reset:n;border-top:1px solid #272727}.next .n{counter-increment:n;display:grid;grid-template-columns:34px 1fr auto;gap:14px;padding:14px 2px;border-bottom:1px solid #EAEAEA;text-decoration:none;color:#262626;align-items:start}
+.next .n::before{content:counter(n);font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:26px;line-height:1;color:#9DBFE3}.next .n:hover strong{text-decoration:underline}
+.next .n>span>a{text-decoration:none}.next .n:hover strong{text-decoration:none}.next .n>span>a:hover strong{text-decoration:underline}.next strong{display:block;font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:17px;color:#1F4E8C}.next .k{font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:#888888}.next .o{display:block;font-size:12px;color:#888888}.next .w{display:block;font-size:12.5px;color:#444}
 .next .d{font-size:12.5px;text-align:right;font-variant-numeric:tabular-nums;max-width:190px}.next .d .sub{display:block;font-size:11px;color:#888888}.next .d .dt{white-space:nowrap}
+.done,.undo{display:inline-flex;align-items:center;gap:5px;margin-top:8px;font-family:Raleway,'Open Sans',Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;min-height:28px;padding:0 9px;border:1px solid #1F4E8C;border-radius:2px;background:#fff;color:#1F4E8C;cursor:pointer}.done:hover,.undo:hover{background:#1F4E8C;color:#fff}
+#donelist[hidden]{display:none}#donelist .n::before{content:"";}#donelist strong{color:#555}#donelist{border-top:1px solid #EAEAEA}
 #next .wrap{max-width:788px}#next{background:#FBFCFE;border-top:1px solid #EAEAEA;border-bottom:1px solid #EAEAEA}
 .src{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px}.src div{border-top:1px solid #272727;padding-top:12px}.src strong{display:block;font-family:Georgia,'Times New Roman',serif;font-style:italic;font-weight:400;font-size:16px;margin-bottom:4px}.src span{font-size:12.5px;color:#444}
-@media(max-width:760px){.next a.n{grid-template-columns:28px 1fr}.next .d{grid-column:2;text-align:left;max-width:none}}
+@media(max-width:760px){.next .n{grid-template-columns:28px 1fr}.next .d{grid-column:2;text-align:left;max-width:none}}
 </style></head><body>
 <div id="app">
 <div class="banner">Personal working page. Not for public distribution.</div>
@@ -56,7 +58,7 @@ h2{font-size:28px;font-weight:700;font-style:italic;line-height:1.25;color:#2727
 <main>
 <div class="wrap hero"><h1>Opportunities for an inequality scholar who builds things</h1><p>Positions, fellowships, grants, scholarships, conferences and workshops on inequality, mobility and public finance. Each is ranked by fit for distributional research, policy experience and data visualization, by what a Ph.D. candidate can act on now, and by how easy it is to reach from New York.</p>
 <div class="stats"><div><strong data-n="position">0</strong><span>Positions</span></div><div><strong data-n="fellowship">0</strong><span>Fellowships</span></div><div><strong data-n="grant">0</strong><span>Grants</span></div><div><strong data-n="scholarship">0</strong><span>Scholarships</span></div><div><strong data-n="conference">0</strong><span>Conferences and workshops</span></div></div></div>
-<section id="next"><div class="wrap"><p class="eyebrow">01 · APPLY NEXT</p><h2>What to act on now</h2><p class="lede">The strongest matches across every category that are open to you today, ordered by fit, by how soon they are due and by how close they are to New York. The list reorders itself each day. As of <span id="asof"></span>.</p><div class="next" id="nextlist"></div><p class="note">Dates in blue are due within two weeks. <span id="swept"></span></p></div></section>
+<section id="next"><div class="wrap"><p class="eyebrow">01 · APPLY NEXT</p><h2>What to act on now</h2><p class="lede">The strongest matches across every category that are open to you today, ordered by fit, by how soon they are due and by how close they are to New York. The list reorders itself each day. As of <span id="asof"></span>.</p><div class="next" id="nextlist"></div><div class="more" id="donemore"></div><div class="next" id="donelist" hidden></div><p class="note">Dates in blue are due within two weeks. Press Applied to move something off this list; it stays under Applied, saved in this browser. <span id="swept"></span></p></div></section>
 <section id="position"><div class="wrap"><p class="eyebrow">02 · POSITIONS</p><h2>Ranked by fit</h2><p class="lede">What a Ph.D. candidate can apply to now comes first. Tenure-track lines and postdocs follow, to show what will be there in the market year. Most come from this cycle's JOE listings; check each listing's requirements.</p><div id="b-position"><div class="chips" role="group" aria-label="Filter"></div><div class="tools"><input type="search" placeholder="Search" aria-label="Search positions"><span class="count" aria-live="polite"></span></div><div class="rhead"><span>Position</span><span>Institution</span><span>Location</span><span>Deadline</span></div><div class="rows body"></div><div class="more"></div></div></div></section><section id="fellowship"><div class="wrap"><p class="eyebrow">03 · FELLOWSHIPS</p><h2>Time and a place to do the work</h2><p class="lede">Graduate Center awards, residencies, dissertation fellowships and the research year abroad.</p><div id="b-fellowship"><div class="chips" role="group" aria-label="Filter"></div><div class="tools"><span class="count" aria-live="polite"></span></div><div class="rhead"><span>Opportunity</span><span>Sponsor</span><span>Award</span><span>Deadline</span></div><div class="rows body"></div><div class="more"></div></div></div></section><section id="grant"><div class="wrap"><p class="eyebrow">04 · GRANTS</p><h2>Money for the research itself</h2><p class="lede">Dissertation and research grants, then travel funding.</p><div id="b-grant"><div class="chips" role="group" aria-label="Filter"></div><div class="tools"><span class="count" aria-live="polite"></span></div><div class="rhead"><span>Opportunity</span><span>Sponsor</span><span>Award</span><span>Deadline</span></div><div class="rows body"></div><div class="more"></div></div></div></section><section id="scholarship"><div class="wrap"><p class="eyebrow">05 · SCHOLARSHIPS</p><h2>Support tied to service</h2><p class="lede">Awards open to National Guard members in graduate study.</p><div id="b-scholarship"><div class="chips" role="group" aria-label="Filter"></div><div class="tools"><span class="count" aria-live="polite"></span></div><div class="rhead"><span>Opportunity</span><span>Sponsor</span><span>Award</span><span>Deadline</span></div><div class="rows body"></div><div class="more"></div></div></div></section><section id="conference"><div class="wrap"><p class="eyebrow">06 · CONFERENCES AND WORKSHOPS</p><h2>Where to present, train and be seen</h2><p class="lede">Meetings and short courses on inequality, mobility and public finance, with what to do about each one now.</p><div id="b-conference"><div class="chips" role="group" aria-label="Filter"></div><div class="tools"><span class="count" aria-live="polite"></span></div><div class="rhead"><span>Meeting</span><span>Organizer</span><span>Where and when</span><span>Deadline</span></div><div class="rows body"></div><div class="more"></div></div></div></section>
 <section id="journals"><div class="wrap"><p class="eyebrow">07 · JOURNALS</p><h2>Where the work fits</h2><p class="lede">Outlets for distributional research.</p><div class="cards"><div class="card"><span class="k">Field</span><strong>Journal of Economic Inequality</strong><span>The field journal for measurement and analysis of inequality and poverty.</span><a href="https://link.springer.com/journal/10888" target="_blank" rel="noopener">Journal page ↗</a></div><div class="card"><span class="k">Field</span><strong>Review of Black Political Economy</strong><span>Research on the economic status of Black and other marginalized communities.</span><a href="https://journals.sagepub.com/home/rbp" target="_blank" rel="noopener">Journal page ↗</a></div><div class="card"><span class="k">Field</span><strong>Review of Income and Wealth</strong><span>Income and wealth measurement, distribution and national accounts.</span><a href="https://onlinelibrary.wiley.com/journal/14754991" target="_blank" rel="noopener">Journal page ↗</a></div><div class="card"><span class="k">Interdisciplinary</span><strong>RSF: The Russell Sage Foundation Journal of the Social Sciences</strong><span>Open-access themed issues on inequality, labor markets and social policy.</span><a href="https://www.rsfjournal.org" target="_blank" rel="noopener">Journal page ↗</a></div></div></div></section>
 <section id="sources"><div class="wrap"><p class="eyebrow">08 · SOURCES</p><h2>Where this page looks</h2><p class="lede">Each morning a sweep reads the public Bluesky posts and the websites of the groups below, checks every lead on the sponsor's own page, and adds what fits inequality, mobility and public finance. New York comes first when fit is equal.</p><div class="src"><div><strong>Stone Center network</strong><span>The Stone Centers at the CUNY Graduate Center, Chicago, Michigan, MIT, UBC, UCL and Munich, and the LIS data center.</span></div><div><strong>Funders and research centers</strong><span>NBER calls, Russell Sage, Equitable Growth, the Institute for Research on Poverty, INET, Upjohn, LSE Inequalities and the World Inequality Database.</span></div><div><strong>Public finance</strong><span>The National Tax Association, the International Institute of Public Finance, the Tax Policy Center and Policy Impacts.</span></div><div><strong>New York</strong><span>Graduate Center fellowship notices, the New York Fed, PSC-CUNY, Columbia's Center on Poverty and Social Policy and the Eastern Economic Association.</span></div></div><p class="note">Bluesky hashtag feeds, X, LinkedIn and Facebook need a signed-in browser, so they are searched by hand rather than each morning.</p></div></section>
@@ -70,11 +72,11 @@ const KLABEL={position:"Position",fellowship:"Fellowship",grant:"Grant",scholars
 const iso=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
 const fmt=d=>new Date(d+"T12:00:00").toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"});
 const longDate=d=>new Date(d+"T12:00:00").toLocaleDateString("en-US",{month:"long",day:"numeric",year:"numeric"});
-function prepare(items,today){
+function prepare(items,today,applied){
   const days=d=>Math.round((new Date(d+"T12:00:00")-new Date(today+"T12:00:00"))/864e5);
   const step=d=>d<=7?30:d<=21?20:d<=45?10:d<=90?5:0;
   items.forEach(x=>{
-    const dues=x.dues||[];x.tags=x.tags||[];
+    const dues=x.dues||[];x.tags=x.tags||[];x.key=x.name+"|"+x.org;x.applied=!!(applied&&applied[x.key]);x.appliedText=x.applied?"Applied "+fmt(applied[x.key]):"";
     x.due=dues.find(d=>d>=today)||"";
     x.lapsed=dues.length>0&&!x.due;
     x.hide=(x.lapsed&&x.kind==="position")||(!!x.until&&x.until<today);
@@ -86,42 +88,60 @@ function prepare(items,today){
     x.score=x.fit*20+x.urg+x.near;
     x.fitText=FIT[x.fit]||"";
     x.kindLabel=x.kind==="conference"&&x.tags.includes("Workshop")?"Workshop":KLABEL[x.kind];
-    x.stageText=x.lapsed?"Deadline passed":x.kind==="position"?(x.stage==="now"?"Can apply now":"Needs the Ph.D. in hand"):(x.stage==="now"?"Act this cycle":"Plan ahead");
+    x.stageText=x.applied?"Applied":x.lapsed?"Deadline passed":x.kind==="position"?(x.stage==="now"?"Can apply now":"Needs the Ph.D. in hand"):(x.stage==="now"?"Act this cycle":"Plan ahead");
     x.dateText=x.due?fmt(x.due):x.lapsed?"Closed "+fmt(dues[dues.length-1]):(x.dueText||"See site");
     x.dateNote=x.due?(x.dueText||""):"";
     x.hay=[x.name,x.org,x.detail,x.why,x.via||"",x.tags.join(" ")].join(" ").toLowerCase();
   });
   const live=items.filter(x=>!x.hide);
-  const grp=x=>x.lapsed?2:x.stage==="now"?0:1;
+  const grp=x=>x.applied?3:x.lapsed?2:x.stage==="now"?0:1;
   const rank=(a,b)=>(grp(a)-grp(b))||(b.fit-a.fit)||(b.near-a.near)||((a.when||"9999").localeCompare(b.when||"9999"))||a.name.localeCompare(b.name);
-  const picks=live.filter(x=>x.stage==="now"&&!x.lapsed).sort((a,b)=>(b.score-a.score)||rank(a,b)).slice(0,7);
-  return {live:live,rank:rank,picks:picks};
+  const picks=live.filter(x=>x.stage==="now"&&!x.lapsed&&!x.applied).sort((a,b)=>(b.score-a.score)||rank(a,b)).slice(0,7);
+  return {live:live,rank:rank,picks:picks,done:live.filter(x=>x.applied)};
 }
 function chipsFor(items){
-  const stages=[...new Set(items.filter(x=>!x.lapsed).map(x=>x.stageText))],cnt={};
+  const stages=[...new Set(items.filter(x=>!x.lapsed||x.applied).map(x=>x.stageText))],cnt={};
   items.forEach(x=>x.tags.forEach(t=>{cnt[t]=(cnt[t]||0)+1}));
   const rest=Object.keys(cnt).filter(t=>!PIN.includes(t)).sort((a,b)=>(cnt[b]-cnt[a])||a.localeCompare(b));
   return ["All"].concat(items.some(x=>x.isNew)?["New"]:[],stages,PIN.filter(t=>cnt[t]).concat(rest).slice(0,8));
 }
 const hit=(x,tag)=>tag==="All"||(tag==="New"?x.isNew:(x.stageText===tag||x.tags.includes(tag)));
 
-const KINDS=[["position", "Positions", "Ranked by fit", "What a Ph.D. candidate can apply to now comes first. Tenure-track lines and postdocs follow, to show what will be there in the market year. Most come from this cycle's JOE listings; check each listing's requirements.", 5], ["fellowship", "Fellowships", "Time and a place to do the work", "Graduate Center awards, residencies, dissertation fellowships and the research year abroad.", 5], ["grant", "Grants", "Money for the research itself", "Dissertation and research grants, then travel funding.", 5], ["scholarship", "Scholarships", "Support tied to service", "Awards open to National Guard members in graduate study.", 5], ["conference", "Conferences and workshops", "Where to present, train and be seen", "Meetings and short courses on inequality, mobility and public finance, with what to do about each one now.", 5]], today=iso(new Date()), P=prepare(window.ITEMS||[],today);
+const KINDS=[["position", "Positions", "Ranked by fit", "What a Ph.D. candidate can apply to now comes first. Tenure-track lines and postdocs follow, to show what will be there in the market year. Most come from this cycle's JOE listings; check each listing's requirements.", 5], ["fellowship", "Fellowships", "Time and a place to do the work", "Graduate Center awards, residencies, dissertation fellowships and the research year abroad.", 5], ["grant", "Grants", "Money for the research itself", "Dissertation and research grants, then travel funding.", 5], ["scholarship", "Scholarships", "Support tied to service", "Awards open to National Guard members in graduate study.", 5], ["conference", "Conferences and workshops", "Where to present, train and be seen", "Meetings and short courses on inequality, mobility and public finance, with what to do about each one now.", 5]], today=iso(new Date()), ITEMS=window.ITEMS||[], KEY="mgs-applied";
+let AP={};try{AP=JSON.parse(localStorage.getItem(KEY)||"{}")||{}}catch(e){AP={}}
+let P, doneOpen=false; const draws=[];
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const dateHtml=x=>x.due?`<span class="dt${x.soon?" soon":""}">${esc(x.dateText)}</span>${x.dateNote?`<span class="sub">${esc(x.dateNote)}</span>`:""}`:esc(x.dateText);
 const NEW='<b class="new">New</b>';
-document.getElementById("nextlist").innerHTML=P.picks.map(x=>`<a class="n" href="${esc(x.url)}" target="_blank" rel="noopener"><span><span class="k">${esc(x.kindLabel)} · ${x.fitText}${x.isNew?" · "+NEW:""}</span><strong>${esc(x.name)}</strong><span class="o">${esc(x.org)} · ${esc(x.detail)}</span><span class="w">${esc(x.why)}</span></span><span class="d">${dateHtml(x)}</span></a>`).join("");
 const CH='<svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2,5 7,10 12,5"/></svg>';
+const TICK='<svg width="11" height="11" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2,7 6,11 12,3"/></svg>';
+const nextRow=(x,done)=>`<div class="n"><span><span class="k">${esc(x.kindLabel)} · ${x.fitText}${x.isNew&&!done?" · "+NEW:""}</span><a href="${esc(x.url)}" target="_blank" rel="noopener"><strong>${esc(x.name)}</strong></a><span class="o">${esc(x.org)} · ${esc(x.detail)}</span>${done?"":`<span class="w">${esc(x.why)}</span>`}</span><span class="d">${done?esc(x.appliedText):dateHtml(x)}<br><button type="button" class="${done?"undo":"done"}" data-k="${esc(x.key)}">${done?"Put back":TICK+" Applied"}</button></span></div>`;
+function drawNext(){
+  document.getElementById("nextlist").innerHTML=P.picks.map(x=>nextRow(x,false)).join("")||'<p class="note">Nothing open right now.</p>';
+  const m=document.getElementById("donemore"),l=document.getElementById("donelist");
+  m.hidden=!P.done.length;m.innerHTML=`<button type="button" aria-expanded="${doneOpen}">${doneOpen?"Hide applied":"Applied ("+P.done.length+")"} ${CH}</button>`;
+  l.hidden=!doneOpen||!P.done.length;l.innerHTML=P.done.map(x=>nextRow(x,true)).join("");
+}
+function refresh(){P=prepare(ITEMS,today,AP);drawNext();draws.forEach(d=>d())}
+document.getElementById("next").addEventListener("click",e=>{
+  const b=e.target.closest("button[data-k]");
+  if(b){const k=b.dataset.k;if(AP[k])delete AP[k];else AP[k]=today;try{localStorage.setItem(KEY,JSON.stringify(AP))}catch(err){}refresh();return}
+  if(e.target.closest("#donemore button")){doneOpen=!doneOpen;drawNext()}
+});
+P=prepare(ITEMS,today,AP);
 KINDS.forEach(([kind,,,,limit])=>{
-  const el=document.getElementById("b-"+kind), items=P.live.filter(x=>x.kind===kind).sort(P.rank), chips=chipsFor(items);let tag="All",q="",open=false;
-  const draw=()=>{const list=items.filter(x=>hit(x,tag)&&(!q||x.hay.includes(q)));
+  const el=document.getElementById("b-"+kind), all=()=>P.live.filter(x=>x.kind===kind).sort(P.rank);let tag="All",q="",open=false;
+  const draw=()=>{const items=all(),chips=chipsFor(items);if(!chips.includes(tag))tag="All";const list=items.filter(x=>hit(x,tag)&&(!q||x.hay.includes(q)));
     el.querySelector(".chips").innerHTML=chips.map(c=>`<button type="button" class="chip" data-t="${esc(c)}" aria-pressed="${tag===c}">${esc(c)}</button>`).join("");
     el.querySelector(".count").textContent=list.length+" listed";
-    el.querySelector(".body").innerHTML=(open?list:list.slice(0,limit)).map(x=>`<div class="row"><span><a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.name)}</a><span class="sub">${x.isNew?NEW+" · ":""}<b class="fit f${x.fit}">${x.fitText}</b> · ${x.stageText}${x.via?" · via "+esc(x.via):""}</span><span class="sub why">${esc(x.why)}</span></span><span>${esc(x.org)}</span><span>${esc(x.detail)}</span><span class="dl">${dateHtml(x)}</span></div>`).join("")||'<p class="note">Nothing matches.</p>';
-    const m=el.querySelector(".more");m.hidden=list.length<=limit;m.innerHTML=`<button type="button" aria-expanded="${open}">${open?"Show fewer":"Show all "+list.length} ${CH}</button>`};
+    el.querySelector(".body").innerHTML=(open?list:list.slice(0,limit)).map(x=>`<div class="row"><span><a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.name)}</a><span class="sub">${x.isNew?NEW+" · ":""}<b class="fit f${x.fit}">${x.fitText}</b> · ${x.applied?esc(x.appliedText):x.stageText}${x.via?" · via "+esc(x.via):""}</span><span class="sub why">${esc(x.why)}</span></span><span>${esc(x.org)}</span><span>${esc(x.detail)}</span><span class="dl">${dateHtml(x)}</span></div>`).join("")||'<p class="note">Nothing matches.</p>';
+    const m=el.querySelector(".more");m.hidden=list.length<=limit;m.innerHTML=`<button type="button" aria-expanded="${open}">${open?"Show fewer":"Show all "+list.length} ${CH}</button>`;
+    document.querySelector(`[data-n="${kind}"]`).textContent=items.length};
   el.addEventListener("click",e=>{const c=e.target.closest(".chip");if(c){tag=c.dataset.t;open=false;draw();return}if(e.target.closest(".more button")){open=!open;draw()}});
   const inp=el.querySelector("input");if(inp)inp.addEventListener("input",e=>{q=e.target.value.trim().toLowerCase();open=false;draw()});
-  draw();document.querySelector(`[data-n="${kind}"]`).textContent=items.length;
+  draws.push(draw);
 });
+refresh();
 document.getElementById("asof").textContent=longDate(today);
 if(window.SWEPT)document.getElementById("swept").textContent="Sources last swept "+longDate(window.SWEPT)+".";
 </script><script src="gate.js"></script></body></html>
